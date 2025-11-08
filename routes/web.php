@@ -26,6 +26,9 @@ Route::prefix('dashboard/')->name('dashboard.')->middleware(['auth', 'verified']
 
     //* MY PROFILE ROUTES 
     Route::get('my-profile', [MyProfileController::class,'view'])->name('my.profile.view');
+    Route::post('my-profile-info', [MyProfileController::class,'profileInfo'])->name('my.profile.info');
+    Route::post('my-profile-password', [MyProfileController::class,'profilePassword'])->name('my.profile.password');
+    Route::post('my-profile-image', [MyProfileController::class,'profileImage'])->name('my.profile.image');
 
 
 });
