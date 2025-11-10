@@ -130,7 +130,7 @@
 
           <ul class="menu-inner py-1">
             <!-- Dashboard -->
-            <li class="menu-item active">
+            <li class="menu-item ">
               <a href="index.html" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
@@ -138,16 +138,16 @@
             </li>
 
             <!-- Layouts -->
-            <li class="menu-item">
+            <li class="menu-item {{ Route::is('dashboard.rolePermission.create.user') ? 'active open':'' }}">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-layout"></i>
-                <div data-i18n="Layouts">Layouts</div>
+                <iconify-icon icon="mdi:key-outline" width="24" height="24"></iconify-icon> &nbsp;&nbsp;
+                <div data-i18n="Layouts">Role Permission</div>
               </a>
 
               <ul class="menu-sub">
-                <li class="menu-item">
-                  <a href="layouts-without-menu.html" class="menu-link">
-                    <div data-i18n="Without menu">Without menu</div>
+                <li class="menu-item {{ Route::is('dashboard.rolePermission.create.user') ? 'active ':'' }}">
+                  <a href="{{ route('dashboard.rolePermission.create.user') }}" class="menu-link">
+                    <div data-i18n="Without menu">Create User</div>
                   </a>
                 </li>
                
@@ -282,6 +282,8 @@
 
     <!-- Page JS -->
     <script src="{{ asset('assets/js/dashboards-analytics.js') }}"></script>
+
+    <script src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js"></script>
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>

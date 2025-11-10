@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\MyProfile\MyProfileController;
+use App\Http\Controllers\Backend\RolePermission\RolePermissionController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,13 +23,20 @@ Route::middleware('auth')->group(function () {
 
 //* BACKEND ROUTES 
 Route::prefix('dashboard/')->name('dashboard.')->middleware(['auth', 'verified'])->group(function(){
-
-
+    
+    
     //* MY PROFILE ROUTES 
     Route::get('my-profile', [MyProfileController::class,'view'])->name('my.profile.view');
     Route::post('my-profile-info', [MyProfileController::class,'profileInfo'])->name('my.profile.info');
     Route::post('my-profile-password', [MyProfileController::class,'profilePassword'])->name('my.profile.password');
     Route::post('my-profile-image', [MyProfileController::class,'profileImage'])->name('my.profile.image');
+    
+    
+    //* ROLE AND PERMISSION 
+    Route::prefix('role-permission/')->name('rolePermission.')->group(function(){
+        Route::get('create-user', [RolePermissionController::class,'createUser'])->name('create.user');
+        Route::post('create-user', [RolePermissionController::class,'storeUser'])->name('store.user');
+    });
 
 
 });
