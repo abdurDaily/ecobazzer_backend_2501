@@ -2,13 +2,17 @@
 @section('backend_content')
 <div class="card p-3">
     <div class="card-header d-flex justify-content-between align-items-center ">
-        <h5 class="mb-0">Create new user</h5>
+        <h5 class="mb-0">Edit User</h5>
         <a href="{{ route('dashboard.rolePermission.list.users') }}" class="btn btn-primary">List users</a>
     </div>
 
     <div class="card-body">
-        <form action="{{ route('dashboard.rolePermission.store.user') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('dashboard.rolePermission.update.user', $editUser->id) }}" method="post"
+            enctype="multipart/form-data">
             @csrf
+
+
+            @method('put')
 
             <div class="row">
                 <div class="col-lg-4 text-center position-relative">
@@ -19,9 +23,11 @@
                     <label for="imgInp">
                         <img id="user_image"
                             style="max-width: 200px; width: 100%; border: 1px solid #00000024; padding: 20px; cursor: pointer;"
-                            class="img-fluid" src="{{ asset('assets/img/upload.webp') }}" alt="">
+                            class="img-fluid"
+                            src="{{ $editUser->profile_image ? asset('storage/profileImages/' . $editUser->profile_image) : asset('assets/img/upload.webp') }}"
+                            alt="">
                     </label>
-                    <input name="user_image" hidden accept="image/*" type='file' id="imgInp" />
+                    <input value="{{ $editUser->profile_image }}" hidden name="user_image"  accept="image/*" type='file' id="imgInp" />
 
                     @error('user_image')
                     <p class="text-danger">{{ $message }}</p>
@@ -31,11 +37,13 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <label for="user_name">user name:</label>
-                            <input type="text" class="form-control p-3" placeholder="user name" name="user_name">
+                            <input value="{{ $editUser->name  }}" type="text" class="form-control p-3"
+                                placeholder="user name" name="user_name">
                         </div>
                         <div class="col-lg-6">
                             <label for="user_email">user email:</label>
-                            <input type="email" class="form-control p-3" placeholder="user email" name="user_email">
+                            <input value="{{ $editUser->email }}" type="email" class="form-control p-3"
+                                placeholder="user email" name="user_email">
                         </div>
                         <div class="col-lg-6 mt-2">
                             <label for="user_password">user email:</label>
@@ -55,7 +63,7 @@
                         </div>
 
                         <div class="col mt-3">
-                            <button type="submit" class="w-100 btn btn-primary p-2">Register new user </button>
+                            <button type="submit" class="w-100 btn btn-primary p-2">Update User Info</button>
                         </div>
 
                     </div>
