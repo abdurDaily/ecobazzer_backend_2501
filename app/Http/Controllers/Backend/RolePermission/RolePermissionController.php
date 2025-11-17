@@ -9,6 +9,7 @@ use SweetAlert2\Laravel\Swal;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Console\View\Components\Alert;
+use Spatie\Permission\Models\Permission;
 
 class RolePermissionController extends Controller
 {
@@ -91,10 +92,45 @@ class RolePermissionController extends Controller
     }
 
     //* ROLE LIST 
-    public function roleList($id){
+    public function roleList($id)
+    {
         $user = User::find($id);
         $roles = Role::latest()->get();
-        return view('backend.rolePermission.roleList', compact('roles','user'));
+        return view('backend.rolePermission.roleList', compact('roles', 'user'));
+    }
+
+    //* ALL ROLES 
+    public function allRoles()
+    {
+        $roles = Role::get();
+        return view('backend.rolePermission.allRoles', compact('roles'));
+    }
+
+    //* permissions
+    public function permissions($id)
+    {
+        $role = Role::find($id);
+        $permissions =  Permission::latest()->get();
+        return view('backend.rolePermission.permissions', compact('role', 'permissions'));
+    }
+
+    //* permissionsStore
+    public function permissionsStore(Request $request)
+    {
+   
+        $role = Role::find($request->role_name);
+        $role->syncPermissions($request->permissions);
+        toastr()->success('permissions assigned successfully.');
+        return back();
+    }
+
+    //* ROLE LIST STORE 
+    public function roleListStore(Request $request)
+    {
+        $user = User::find($request->user_id);
+        $user->syncRoles($request->roles);
+        toastr()->success('role assigned successfully.');
+        return back();
     }
 
     //* storeUser

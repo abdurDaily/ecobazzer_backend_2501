@@ -33,7 +33,7 @@ Route::prefix('dashboard/')->name('dashboard.')->middleware(['auth', 'verified']
     
     
     //* ROLE AND PERMISSION 
-    Route::prefix('role-permission/')->name('rolePermission.')->group(function(){
+    Route::prefix('role-permission/')->middleware('can:delete')->name('rolePermission.')->group(function(){
         Route::get('create-user', [RolePermissionController::class,'createUser'])->name('create.user');
         Route::post('create-user', [RolePermissionController::class,'storeUser'])->name('store.user');
         Route::get('list-users', [RolePermissionController::class,'listUsers'])->name('list.users');
@@ -42,7 +42,11 @@ Route::prefix('dashboard/')->name('dashboard.')->middleware(['auth', 'verified']
         Route::put('update-users/{id}', [RolePermissionController::class,'updateUser'])->name('update.user');
         Route::get('create-role', [RolePermissionController::class,'createRole'])->name('create.role');
         Route::post('create-role', [RolePermissionController::class,'createRoleStore'])->name('create.role.store');
+        Route::post('role-list', [RolePermissionController::class,'roleListStore'])->name('role.list.store');
         Route::get('role-list/{id}', [RolePermissionController::class,'roleList'])->name('role.list');
+        Route::get('all-roles', [RolePermissionController::class,'allRoles'])->name('roles.all');
+        Route::get('permissions/{id}', [RolePermissionController::class,'permissions'])->name('permissions');
+        Route::post('permissions', [RolePermissionController::class,'permissionsStore'])->name('permissions.store');
     });
 
 
