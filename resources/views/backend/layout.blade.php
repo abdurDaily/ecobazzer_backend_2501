@@ -23,6 +23,8 @@
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico" />
 
+    @stack('backend_css')
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -137,11 +139,19 @@
               </a>
             </li>
 
+
+            <li class="menu-item {{ Route::is('dashboard.category.*') ? 'active' :''}} ">
+              <a href="{{ route('dashboard.category.index') }}" class="menu-link">
+                <iconify-icon icon="formkit:file" width="16" height="16"></iconify-icon> &nbsp;&nbsp;&nbsp;
+                <div data-i18n="Analytics">Categories</div>
+              </a>
+            </li>
+
             {{-- @can('create') --}}
             <!-- Layouts -->
             <li class="menu-item {{ Route::is('dashboard.rolePermission.*')  ? 'active open':'' }}">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <iconify-icon icon="mdi:key-outline" width="24" height="24"></iconify-icon> &nbsp;&nbsp;
+                <iconify-icon icon="mdi:key-outline" width="20" height="20"></iconify-icon> &nbsp;&nbsp;
                 <div data-i18n="Layouts">Role Permission</div>
               </a>
 
