@@ -36,7 +36,9 @@ Route::prefix('dashboard/')->name('dashboard.')->middleware(['auth', 'verified']
     Route::prefix('category')->name('category.')->group(function () {
         Route::get('/', [CategoryController::class, 'index'])->name('index');
         Route::post('/', [CategoryController::class, 'categoryStore'])->name('store');
-        Route::get('/view', [CategoryController::class, 'categoryView'])->name('view');
+        Route::get('/view', action: [CategoryController::class, 'categoryView'])->name('view');
+        Route::get('/edit/{slug}', [CategoryController::class, 'categoryEdit'])->name('edit');
+        Route::put('/update/{slug}', [CategoryController::class, 'categoryUpdate'])->name('update');
     });
 
 

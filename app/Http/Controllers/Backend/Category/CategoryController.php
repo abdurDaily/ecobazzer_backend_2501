@@ -36,8 +36,46 @@ class CategoryController extends Controller
     }
 
     //* categoryView 
-    public function categoryView(){
-        $categories = Category::get();
+
+    public function categoryView()
+    {
+        // Use 'parent' not 'parents'
+        $categories = Category::with('parent')->get();
+        // dd($categories);
         return view('backend.category.viewCategory', compact('categories'));
+    }
+
+
+    //* categoryEdit
+
+    public function categoryEdit($slug)
+    {
+        $edit_category = Category::where('slug', $slug)->first();
+        $categories = Category::select('id', 'title')->get();
+        return view('backend.category.edit', compact('edit_category', 'categories'));
+    }
+
+    //*categoryUpdate
+
+    public function categoryUpdate(Request $request, $slug)
+    {
+        $request->validate([
+            'title' => 'required'
+        ]);
+
+        $update_category = Category::where('slug', $slug)->first();
+
+        $update_category->title = $request->title;
+        $update_category->slug = Str::slug($request->title) . uniqid();
+        $update_category->category_id = $request->category_id;
+        $update_category->meta_title = $request->meta_title;
+        $update_category->description = $request->meta_descriptions;
+        $update_category->keywords = $request->meta_keywords;
+        $update_category->save();
+
+        toastr()->success('Category updated successfully.');
+
+        // Redirect to category view/list page
+        return redirect()->route('dashboard.category.view');
     }
 }

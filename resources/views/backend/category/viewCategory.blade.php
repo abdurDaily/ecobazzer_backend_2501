@@ -28,19 +28,21 @@
             <tr>
                 <td>{{ ++$key }}</td>
                 <td>{{ $category->title }}</td>
-                <td>Parent</td>
+                <td> <span class="badge bg-{{ $category->parent ? 'success' : 'danger' }}">{{ $category->parent ? $category->parent->title : 'not found' }}</span> </td>
                 <td>{{ $category->meta_title ? $category->meta_title: '------' }}</td>
                 <td>{{ $category->description ? $category->description: '------' }}</td>
                 <td>{{ $category->keywords ? $category->keywords: '------' }}</td>
                 <td>
-                    <a href="#" class="btn btn-outline-primary btn-sm">edit</a>
+                    <a href="{{ route('dashboard.category.edit', $category->slug) }}" class="btn btn-outline-primary btn-sm">edit</a>
                     <a href="#" class="btn btn-outline-danger btn-sm">Delete</a>
                 </td>
             </tr>
             @empty
             <tr>
                 <td colspan="7" class="text-center">
-                    <div class="alert alert-danger"><p>No category data found</p></div>
+                    <div class="alert alert-danger">
+                        <p>No category data found</p>
+                    </div>
                 </td>
             </tr>
             @endforelse

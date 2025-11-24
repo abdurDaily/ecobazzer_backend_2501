@@ -38,11 +38,13 @@
     </div>
 
     <div class="card-body">
-        <form action="{{ route('dashboard.category.store') }}" method="post">
+        <form action="{{ route('dashboard.category.update',  $edit_category->slug) }}" method="post">
             @csrf
+            @method('put')
+
             <div class="row">
                 <div class="col-lg-6">
-                    <input type="text" name="title" placeholder="title" class="form-control p-3">
+                    <input value="{{ $edit_category->title }}" type="text" name="title" placeholder="title" class="form-control p-3">
                     @error('title')
                     <p class="text-danger mb-0 pb-0">{{ $message }}</p>
 
@@ -52,8 +54,9 @@
                 <div class="col-lg-6">
                     <select class="js-example-basic-single form-control" name="category_id">
                         <option value="AL" selected disabled> ---Select category ---- </option>
+                        <option value="" selected disabled> -- select any one --</option>
                         @foreach ($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->title }}</option>
+                        <option {{ $category->id == $edit_category->category_id  ? 'selected' : '' }} value="{{ $category->id }}">{{ $category->title }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -72,7 +75,7 @@
                 </div>
 
                 <div class="col-lg-12">
-                    <button class="btn btn-primary p-2 w-100 mt-3">Submit</button>
+                    <button class="btn btn-primary p-2 w-100 mt-3" type="submit">update</button>
                 </div>
             </div>
 
