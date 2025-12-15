@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Backend\Category\CategoryController;
 use App\Http\Controllers\Backend\MyProfile\MyProfileController;
+use App\Http\Controllers\Backend\Product\ProductController;
 use App\Http\Controllers\Backend\RolePermission\RolePermissionController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -58,6 +59,15 @@ Route::prefix('dashboard/')->name('dashboard.')->middleware(['auth', 'verified']
         Route::get('all-roles', [RolePermissionController::class, 'allRoles'])->name('roles.all');
         Route::get('permissions/{id}', [RolePermissionController::class, 'permissions'])->name('permissions');
         Route::post('permissions', [RolePermissionController::class, 'permissionsStore'])->name('permissions.store');
+    });
+
+
+
+     //* PRODUCTS 
+    Route::prefix('product')->name('product.')->group(function () {
+        Route::get('/', [ProductController::class, 'index'])->name('index');
+        Route::post('/store', [ProductController::class, 'store'])->name('store');
+        
     });
 });
 

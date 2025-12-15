@@ -26,15 +26,16 @@
 </style>
 @endpush
 @section('backend_content')
+
 <div class="card p-3">
     <div class="card-header">
         <div class="d-flex justify-content-between align-items-center">
-        <p class="mb-0 pb-0">Add Category</p>
-        <a href="{{ route('dashboard.category.view') }}" class="btn btn-primary btn-sm p-2"
-            style="display: inline-flex; align-items: center; line-height: 0;"> <span class="me-1">
-                <iconify-icon icon="carbon:view" width="18" height="18"></iconify-icon>
-            </span> view all category</a>
-    </div>
+            <p class="mb-0 pb-0">Add Category</p>
+            <a href="{{ route('dashboard.category.view') }}" class="btn btn-primary btn-sm p-2"
+                style="display: inline-flex; align-items: center; line-height: 0;"> <span class="me-1">
+                    <iconify-icon icon="carbon:view" width="18" height="18"></iconify-icon>
+                </span> view all category</a>
+        </div>
     </div>
 
     <div class="card-body">
@@ -44,7 +45,8 @@
 
             <div class="row">
                 <div class="col-lg-6">
-                    <input value="{{ $edit_category->title }}" type="text" name="title" placeholder="title" class="form-control p-3">
+                    <input value="{{ $edit_category->title }}" type="text" name="title" placeholder="title"
+                        class="form-control p-3">
                     @error('title')
                     <p class="text-danger mb-0 pb-0">{{ $message }}</p>
 
@@ -56,7 +58,8 @@
                         <option value="AL" selected disabled> ---Select category ---- </option>
                         <option value="" selected disabled> -- select any one --</option>
                         @foreach ($categories as $category)
-                        <option {{ $category->id == $edit_category->category_id  ? 'selected' : '' }} value="{{ $category->id }}">{{ $category->title }}</option>
+                        <option {{ $category->id == $edit_category->category_id ? 'selected' : '' }} value="{{
+                            $category->id }}">{{ $category->title }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -82,6 +85,7 @@
         </form>
     </div>
 </div>
+
 @endsection
 
 @push('backend_js')

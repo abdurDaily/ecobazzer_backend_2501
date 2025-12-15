@@ -180,6 +180,22 @@
               </ul>
             </li>
               
+            <li class="menu-item {{ Route::is('dashboard.product.*')  ? 'active open':'' }}">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <iconify-icon icon="fluent-mdl2:product" width="20" height="20"></iconify-icon> &nbsp;
+                <div data-i18n="Layouts">Product</div>
+              </a>
+
+              <ul class="menu-sub">
+                <li class="menu-item {{ Route::is('dashboard.product.index') ? 'active ':'' }}">
+                  <a href="{{ route('dashboard.product.index') }}" class="menu-link">
+                    <div data-i18n="Without menu">Add New Product + </div>
+                  </a>
+                </li>
+               
+              </ul>
+            </li>
+              
             {{-- @endcan --}}
 
           </ul>
