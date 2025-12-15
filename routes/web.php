@@ -67,7 +67,10 @@ Route::prefix('dashboard/')->name('dashboard.')->middleware(['auth', 'verified']
     Route::prefix('product')->name('product.')->group(function () {
         Route::get('/', [ProductController::class, 'index'])->name('index');
         Route::post('/store', [ProductController::class, 'store'])->name('store');
-        
+        Route::get('/show', [ProductController::class, 'show'])->name('show');
+        Route::get('/edit/{slug}', [ProductController::class, 'edit'])->name('edit');
+        Route::put('/update/{id}', [ProductController::class, 'update'])->name('update');
+        Route::get('/delete-image/{id}', [ProductController::class, 'imageDelete'])->name('delete');
     });
 });
 
