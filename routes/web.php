@@ -4,12 +4,13 @@ use App\Http\Controllers\Backend\Category\CategoryController;
 use App\Http\Controllers\Backend\MyProfile\MyProfileController;
 use App\Http\Controllers\Backend\Product\ProductController;
 use App\Http\Controllers\Backend\RolePermission\RolePermissionController;
+use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -32,7 +33,7 @@ Route::prefix('dashboard/')->name('dashboard.')->middleware(['auth', 'verified']
     Route::post('my-profile-info', [MyProfileController::class, 'profileInfo'])->name('my.profile.info');
     Route::post('my-profile-password', [MyProfileController::class, 'profilePassword'])->name('my.profile.password');
     Route::post('my-profile-image', [MyProfileController::class, 'profileImage'])->name('my.profile.image');
-    
+
     //* CATEGORY
     Route::prefix('category')->name('category.')->group(function () {
         Route::get('/', [CategoryController::class, 'index'])->name('index');
@@ -63,7 +64,7 @@ Route::prefix('dashboard/')->name('dashboard.')->middleware(['auth', 'verified']
 
 
 
-     //* PRODUCTS 
+    //* PRODUCTS 
     Route::prefix('product')->name('product.')->group(function () {
         Route::get('/', [ProductController::class, 'index'])->name('index');
         Route::post('/store', [ProductController::class, 'store'])->name('store');
@@ -77,5 +78,9 @@ Route::prefix('dashboard/')->name('dashboard.')->middleware(['auth', 'verified']
 
 
 //* FRONTEND ROUTES 
+Route::name('frontend.')->group(function () {
+    Route::get('/', [FrontendController::class, 'index'])->name('index');
+    Route::get('/add-to-cart/{id}', [FrontendController::class, 'addToCart'])->name('add.to.cart');
+});
 
 require __DIR__ . '/auth.php';

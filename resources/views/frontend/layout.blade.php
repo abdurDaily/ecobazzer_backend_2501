@@ -36,8 +36,9 @@
             <div class="row justify-content-between">
 
                 <div class="col-lg-5  d-flex align-items-center">
-                    <span class="location"><iconify-icon icon="fluent:location-28-regular" width="20"
-                            height="20"></iconify-icon></span>
+                    <span class="location">
+                        <iconify-icon icon="fluent:location-28-regular" width="20" height="20"></iconify-icon>
+                    </span>
                     <span class="location_text">Store Location: Lincoln- 344, Illinois, Chicago, USA</span>
                 </div>
 
@@ -79,8 +80,9 @@
                 </div>
                 <div class="col-lg-5">
                     <form action="" class="search_bar">
-                        <span class="search_icon"><iconify-icon icon="uil:search" width="20"
-                                height="21"></iconify-icon></span>
+                        <span class="search_icon">
+                            <iconify-icon icon="uil:search" width="20" height="21"></iconify-icon>
+                        </span>
                         <input type="text" placeholder="Search">
                         <button class="search_btn">Search</button>
                     </form>
@@ -88,14 +90,16 @@
                 <div class="col-lg-3">
                     <div class="cart_parent">
                         <div class="wishlist_icon">
-                            <a href="wishlist.html"><span><iconify-icon icon="bi:heart" width="35"
-                                        height="33"></iconify-icon></span></a>
+                            <a href="wishlist.html"><span>
+                                    <iconify-icon icon="bi:heart" width="35" height="33"></iconify-icon>
+                                </span></a>
                             <!-- <span id="wishlistCount">0</span> -->
                         </div>
                         <div class="second_divider"></div>
                         <div class="shopping_bag">
-                            <span style="cursor: pointer;" class="cart-icon" id="cartToggleDesktop"><iconify-icon
-                                    icon="teenyicons:bag-outline" width="30" height="30"></iconify-icon></span>
+                            <span style="cursor: pointer;" class="cart-icon" id="cartToggleDesktop">
+                                <iconify-icon icon="teenyicons:bag-outline" width="30" height="30"></iconify-icon>
+                            </span>
                             <span id="cartCountDesktop" class="count cart-badge">0</span>
                             <div class="shop">
                                 <p class="shopping_text mb-0">Shopping cart:</p>
@@ -138,8 +142,8 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle dropdown_bar" href="#" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            Home <iconify-icon icon="iconamoon:arrow-down-2-light" width="24"
-                                height="24"></iconify-icon>
+                            Home <iconify-icon icon="iconamoon:arrow-down-2-light" width="24" height="24">
+                            </iconify-icon>
                         </a>
                         <ul class="dropdown-menu child">
                             <li><a class="dropdown-item" href="index.html">Home-1</a></li>
@@ -150,8 +154,8 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle dropdown_bar" href="#" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            Shop <iconify-icon icon="iconamoon:arrow-down-2-light" width="24"
-                                height="24"></iconify-icon>
+                            Shop <iconify-icon icon="iconamoon:arrow-down-2-light" width="24" height="24">
+                            </iconify-icon>
                         </a>
                         <ul class="dropdown-menu child">
                             <li><a class="dropdown-item" href="shop.html">Shop-1</a></li>
@@ -162,8 +166,8 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle dropdown_bar" href="#" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            Pages <iconify-icon icon="iconamoon:arrow-down-2-light" width="24"
-                                height="24"></iconify-icon>
+                            Pages <iconify-icon icon="iconamoon:arrow-down-2-light" width="24" height="24">
+                            </iconify-icon>
                         </a>
                         <ul class="dropdown-menu child">
                             <li><a class="dropdown-item" href="#">Pages-1</a></li>
@@ -176,8 +180,8 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle dropdown_bar" href="#" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            Blog <iconify-icon icon="iconamoon:arrow-down-2-light" width="24"
-                                height="24"></iconify-icon>
+                            Blog <iconify-icon icon="iconamoon:arrow-down-2-light" width="24" height="24">
+                            </iconify-icon>
                         </a>
                         <ul class="dropdown-menu child">
                             <li><a class="dropdown-item" href="#">Blog-1</a></li>
@@ -197,7 +201,8 @@
                 <div class="call">
                     <a href="">
                         <iconify-icon icon="lucide:phone-call" width="24" height="24"></iconify-icon> <span>(219)
-                            555-0114</span></a>
+                            555-0114</span>
+                    </a>
                 </div>
 
             </div>
@@ -290,22 +295,28 @@
         <div class="container">
             <div class="row justify-content-between ">
                 <div class="col-3 home">
-                    <a href="index.html"><iconify-icon icon="ic:baseline-home" width="30"
-                            height="30"></iconify-icon></a>
+                    <a href="index.html">
+                        <iconify-icon icon="ic:baseline-home" width="30" height="30"></iconify-icon>
+                    </a>
                     <p>home</p>
                 </div>
                 <div class="col-3 category" style="padding-top: 6px;">
-                    <a href="wishlist.html"><iconify-icon icon="bi:heart" width="26" height="26"></iconify-icon></a>
+                    <a href="wishlist.html">
+                        <iconify-icon icon="bi:heart" width="26" height="26"></iconify-icon>
+                    </a>
                     <p>Wishlist</p>
                 </div>
                 <div class="col-3 search">
-                    <span><iconify-icon icon="weui:search-filled" width="30" height="30"></iconify-icon></span>
+                    <span>
+                        <iconify-icon icon="weui:search-filled" width="30" height="30"></iconify-icon>
+                    </span>
                     <p>Search</p>
                 </div>
                 <div class="cart col-3">
                     <div class="cart-container">
-                        <span class="cart-icon" id="cartToggleMobile"><iconify-icon icon="teenyicons:bag-outline"
-                                width="30" height="30"></iconify-icon></span>
+                        <span class="cart-icon" id="cartToggleMobile">
+                            <iconify-icon icon="teenyicons:bag-outline" width="30" height="30"></iconify-icon>
+                        </span>
                         <span id="cartCountMobile" class="cart-badge">0</span>
                     </div>
                     <p>Cart</p>
@@ -319,9 +330,12 @@
         <div class="container">
             <form action="">
                 <input type="text" placeholder="search">
-                <button type="submit"><iconify-icon icon="weui:search-filled" width="24"
-                        height="24"></iconify-icon></button>
-                <span class="close"><iconify-icon icon="line-md:close" width="24" height="24"></iconify-icon></span>
+                <button type="submit">
+                    <iconify-icon icon="weui:search-filled" width="24" height="24"></iconify-icon>
+                </button>
+                <span class="close">
+                    <iconify-icon icon="line-md:close" width="24" height="24"></iconify-icon>
+                </span>
             </form>
 
             <div class="filter_card">
@@ -413,8 +427,40 @@
     </section>
     <!-- ========== End search_contain ========== -->
 
+   
     @yield('frontend_contents')
 
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="count" aria-labelledby="countLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="countLabel">Your Cart</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+           <div class="row">
+             <div class="col-2">image</div>
+             <div class="col-8">details</div>
+             <div class="col-2">delete</div>
+           </div>
+        </div>
+    </div>
+
+    @foreach (session('cart') as $data)
+        @dd($data)
+    @endforeach
+
+
+    <div class="count_cart">
+
+        <button type="button" class="position-relative " data-bs-toggle="offcanvas" data-bs-target="#count"
+        aria-controls="count">
+            CART
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                
+                <span class="visually-hidden">unread messages</span>
+            </span>
+        </button>
+    </div>
 
     <!-- ========== Start footer ========== -->
     <footer id="footer">
@@ -503,6 +549,7 @@
         </div>
     </footer>
     <!-- ========== End footer ========== -->
+
 
 
 
