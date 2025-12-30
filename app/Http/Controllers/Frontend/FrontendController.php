@@ -29,7 +29,6 @@ class FrontendController extends Controller
         if (isset($cart[$id])) {
             // Increment quantity if product exists
             $cart[$id]['qty'] += 1;
-   
         } else {
             // Add new product to cart
             $cart[$id] = [
@@ -43,7 +42,23 @@ class FrontendController extends Controller
 
         // Save cart back to session
         request()->session()->put('cart', $cart);
-        
+
         return redirect()->back()->with('success', 'Product added to cart!');
+    }
+
+    //* REMOVE CART 
+    public function removeCart($id)
+    {
+        $cart = request()->session()->get('cart', []);
+        if (isset($cart[$id])) {
+            unset($cart[$id]);
+            request()->session()->put('cart', $cart);
+            return redirect()->back()->with('success', 'Product cart unset!');
+        }
+    }
+
+    //* checkout
+    public function checkout(){
+        return view('frontend.checkout');
     }
 }

@@ -81,6 +81,8 @@ Route::prefix('dashboard/')->name('dashboard.')->middleware(['auth', 'verified']
 Route::name('frontend.')->group(function () {
     Route::get('/', [FrontendController::class, 'index'])->name('index');
     Route::get('/add-to-cart/{id}', [FrontendController::class, 'addToCart'])->name('add.to.cart');
+    Route::get('/remove-cart/{id}', [FrontendController::class, 'removeCart'])->name('remove.cart');
+    Route::get('/checkout', [FrontendController::class, 'checkout'])->name('checkout');
 });
 
 require __DIR__ . '/auth.php';

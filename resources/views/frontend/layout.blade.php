@@ -427,8 +427,15 @@
     </section>
     <!-- ========== End search_contain ========== -->
 
-   
+
     @yield('frontend_contents')
+
+    @php
+    $cart = session('cart', []);
+    $qty = array_sum(array_column( $cart, 'qty'));
+
+    @endphp
+
 
 
     <div class="offcanvas offcanvas-end" tabindex="-1" id="count" aria-labelledby="countLabel">
@@ -437,30 +444,68 @@
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
-           <div class="row">
-             <div class="col-2">image</div>
-             <div class="col-8">details</div>
-             <div class="col-2">delete</div>
-           </div>
+
+            @php
+            $totalAmount = 0;
+            @endphp
+
+            @forelse ($cart as $id => $data)
+
+
+            <div class="row mb-3 align-items-center">
+                <div class="col-2">
+                    <img class="img-fluid" src="{{ asset('storage/product_images/' .  $data['image']) }}" alt="">
+                </div>
+                <div class="col-8">
+                    <p class="mb-0 pb-0">{{ $data['descriptions'] }}</p>
+                    <b>Price : {{ $data['price'] }}</b>
+                    <b>Qty : {{ $data['qty'] }}</b>
+                </div>
+                <div class="col-2">
+                    <a href="{{ route('frontend.remove.cart', $id) }}" class="text-danger">
+                        <iconify-icon icon="mi:delete" width="24" height="24"></iconify-icon>
+                    </a>
+                </div>
+            </div>
+            @php
+            $totalAmount += $data['price'] * $data['qty']
+            @endphp
+
+
+
+            @empty
+            <p class="text-center text-danger">no cart found!</p>
+            @endforelse
+
+
+
+
+            <p>Sub-Total = {{ $totalAmount }}৳</p>
+
+            <a href="{{ route('frontend.checkout') }}" class="btn btn-outline-success w-100 p-2">Checkout</a>
         </div>
     </div>
 
-    @foreach (session('cart') as $data)
-        @dd($data)
-    @endforeach
+    {{-- @foreach (session('cart') as $data)
+    @dd($data)
+    @endforeach --}}
+
+
+
 
 
     <div class="count_cart">
 
         <button type="button" class="position-relative " data-bs-toggle="offcanvas" data-bs-target="#count"
-        aria-controls="count">
-            CART
+            aria-controls="count">
+            Cart
             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                
+                {{ $qty ? $qty : 0 }}
                 <span class="visually-hidden">unread messages</span>
             </span>
         </button>
     </div>
+
 
     <!-- ========== Start footer ========== -->
     <footer id="footer">
