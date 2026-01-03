@@ -16,6 +16,14 @@ return Application::configure(basePath: dirname(__DIR__))
             'permission' => \Spatie\Permission\Middleware\PermissionMiddleware::class,
             'role_or_permission' => \Spatie\Permission\Middleware\RoleOrPermissionMiddleware::class,
         ]);
+
+        $middleware->validateCsrfTokens(except: [
+            '/success',
+            '/cancel',
+            '/fail',
+            '/ipn',
+            '/pay-via-ajax',
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

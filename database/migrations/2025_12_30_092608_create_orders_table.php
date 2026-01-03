@@ -12,15 +12,18 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('phone');
-            $table->string('email')->nullable();
-            $table->string('address');
-            $table->double('qty');
-            $table->double('price');
-            $table->string('tx_id')->unique();
-            $table->timestamps();
+            $table->id(); // int(11) auto increment primary key
+
+            $table->string('name', 255)->nullable();
+            $table->string('email', 30)->nullable();
+            $table->string('phone', 20)->nullable();
+            $table->double('amount')->nullable();
+            $table->text('address')->nullable();
+            $table->string('status', 10)->nullable();
+            $table->string('transaction_id', 255)->nullable();
+            $table->string('currency', 20)->nullable();
+
+            $table->timestamps(); // created_at & updated_at
         });
     }
 

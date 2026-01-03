@@ -1,12 +1,13 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Frontend\FrontendController;
+use App\Http\Controllers\SslCommerzPaymentController;
+use App\Http\Controllers\Backend\Product\ProductController;
 use App\Http\Controllers\Backend\Category\CategoryController;
 use App\Http\Controllers\Backend\MyProfile\MyProfileController;
-use App\Http\Controllers\Backend\Product\ProductController;
 use App\Http\Controllers\Backend\RolePermission\RolePermissionController;
-use App\Http\Controllers\Frontend\FrontendController;
-use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -83,6 +84,26 @@ Route::name('frontend.')->group(function () {
     Route::get('/add-to-cart/{id}', [FrontendController::class, 'addToCart'])->name('add.to.cart');
     Route::get('/remove-cart/{id}', [FrontendController::class, 'removeCart'])->name('remove.cart');
     Route::get('/checkout', [FrontendController::class, 'checkout'])->name('checkout');
+
+    Route::post('/pay', [FrontendController::class, 'payIndex'])->name('pay');
+    Route::post('/pay-via-ajax', [FrontendController::class, 'payViaAjax']);
 });
+
+
+
+
+// SSLCOMMERZ Start
+Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
+Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);
+
+// Route::post('/pay', [SslCommerzPaymentController::class, 'index']);
+// Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);
+
+Route::post('/success', [SslCommerzPaymentController::class, 'success']);
+Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
+Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
+
+Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
+//SSLCOMMERZ END
 
 require __DIR__ . '/auth.php';

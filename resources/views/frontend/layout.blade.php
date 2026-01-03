@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="{{ asset('front/assets/css/bootstrap.min.css') }}">
     <!-- veno_box -->
     <link rel="stylesheet" href="{{ asset('front/assets/css/venobox.css') }}">
+    @stack('frontend_css')
     <!-- STYLE CSS -->
     <link rel="stylesheet" href="{{ asset('front/assets/css/style.css') }}">
     <!-- RESPONSIVE CSS -->
@@ -619,6 +620,7 @@
     <script src="{{ asset('front/assets/js/app.js') }}"></script>
     <!-- image_zoom -->
     <script src="{{ asset('front/assets/js/zoomsl.js') }}"></script>
+    @stack('frontend_js')
 
 
 </body>

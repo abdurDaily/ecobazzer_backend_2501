@@ -342,25 +342,6 @@ $(function () {
             checkoutTotal && (checkoutTotal.textContent = `$${subtotal.toFixed(2)}`);
         }
 
-        if (placeOrderBtn) {
-            placeOrderBtn.addEventListener("click", () => {
-                if (cart.length === 0) {
-                    alert("Your cart is empty!");
-                    return;
-                }
-
-                const paymentMethod = document.querySelector('input[name="payment"]:checked')?.value || "cod";
-                console.log("Order Placed!", { cart, paymentMethod });
-
-                alert("✅ Order placed successfully!");
-
-                // Clear cart after order
-                cart = [];
-                saveCart();
-                renderAll();
-                renderCheckout();
-            });
-        }
 
         // Checkout page initial render
         renderCheckout();
